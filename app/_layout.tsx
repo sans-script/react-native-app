@@ -1,37 +1,39 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
+import { Ionicons } from "@expo/vector-icons";
+import { Drawer } from "expo-router/drawer";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer screenOptions={{ headerShown: false }}>
+        <Drawer.Screen
+          name="index" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Home",
+            title: "Welcome!",
+            drawerIcon: () => (
+              <Ionicons name="home-outline" size={18} color="#3A98FF" />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="first" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "First Component",
+            title: "Welcome!",
+            drawerIcon: () => (
+              <Ionicons name="heart-circle-outline" size={18} color="#3A98FF" />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="counter" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Counter",
+            title: "Counter",
+            drawerIcon: () => <Ionicons name="add" size={18} color="#3A98FF" />,
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
   );
 }
