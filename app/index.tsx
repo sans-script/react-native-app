@@ -15,7 +15,7 @@ export default function MainWindow() {
         <Text style={{ fontSize: 16 }}>React Native</Text>
       </View>
       <Button onPress={() => nav.dispatch(DrawerActions.openDrawer)}>
-        <Text style={{ color: "white" }}>Counter</Text>
+        <Text style={{ color: "white" }}>Start</Text>
       </Button>
     </View>
   );

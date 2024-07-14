@@ -33,6 +33,36 @@ export default function RootLayout() {
             drawerIcon: () => <Ionicons name="add" size={18} color="#3A98FF" />,
           }}
         />
+        <Drawer.Screen
+          name="form" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Form",
+            title: "Form",
+            drawerIcon: () => (
+              <Ionicons name="checkbox-outline" size={18} color="#3A98FF" />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="tabs" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Tabs",
+            title: "Tabs",
+            drawerIcon: () => (
+              <Ionicons name="albums-outline" size={18} color="#3A98FF" />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="stack" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Stack",
+            title: "Stack",
+            drawerIcon: () => (
+              <Ionicons name="logo-stackoverflow" size={18} color="#3A98FF" />
+            ),
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
